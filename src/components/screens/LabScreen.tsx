@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Flame,
   Zap,
@@ -230,28 +231,37 @@ export const LabScreen: React.FC = () => {
                     Selecciona elementos (118) o compuestos para introducirlos al recipiente...
                   </span>
                 ) : (
-                  selectedReactants.map((id, index) => {
-                    const disp = getReactantDisplay(id);
-                    return (
-                      <div
-                        key={`${id}-${index}`}
-                        className="bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-2.5 py-1 text-xs flex items-center gap-1.5 shadow-sm"
-                      >
-                        <span
-                          className="w-2 h-2 rounded-full shrink-0"
-                          style={{ backgroundColor: disp.color }}
-                        />
-                        <span className="font-mono font-bold text-white">{disp.symbol}</span>
-                        <span className="text-slate-400 hidden sm:inline">{disp.name}</span>
-                        <button
-                          onClick={() => removeReactant(id)}
-                          className="text-slate-400 hover:text-red-400 ml-1 font-bold"
+                  <AnimatePresence>
+                    {selectedReactants.map((id, index) => {
+                      const disp = getReactantDisplay(id);
+                      return (
+                        <motion.div
+                          key={`${id}-${index}`}
+                          layout
+                          initial={{ scale: 0.65, opacity: 0, y: -4 }}
+                          animate={{ scale: 1, opacity: 1, y: 0 }}
+                          exit={{ scale: 0.65, opacity: 0 }}
+                          whileHover={{ scale: 1.04 }}
+                          transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+                          className="bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-2.5 py-1 text-xs flex items-center gap-1.5 shadow-sm"
                         >
-                          ×
-                        </button>
-                      </div>
-                    );
-                  })
+                          <span
+                            className="w-2 h-2 rounded-full shrink-0"
+                            style={{ backgroundColor: disp.color }}
+                          />
+                          <span className="font-mono font-bold text-white">{disp.symbol}</span>
+                          <span className="text-slate-400 hidden sm:inline">{disp.name}</span>
+                          <button
+                            onClick={() => removeReactant(id)}
+                            className="text-slate-400 hover:text-red-400 ml-1 font-bold transition-colors"
+                            title="Retirar reactivo"
+                          >
+                            ×
+                          </button>
+                        </motion.div>
+                      );
+                    })}
+                  </AnimatePresence>
                 )}
               </div>
             </div>
@@ -358,9 +368,12 @@ export const LabScreen: React.FC = () => {
             )}
 
             {/* Execute Experiment CTA */}
-            <button
+            <motion.button
               onClick={executeExperiment}
               disabled={selectedReactants.length === 0 || isExperimentRunning}
+              whileHover={selectedReactants.length > 0 && !isExperimentRunning ? { scale: 1.015, y: -1 } : {}}
+              whileTap={selectedReactants.length > 0 && !isExperimentRunning ? { scale: 0.985 } : {}}
+              transition={{ duration: 0.15 }}
               className={`w-full py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg ${
                 selectedReactants.length === 0
                   ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/40'
@@ -371,7 +384,7 @@ export const LabScreen: React.FC = () => {
             >
               <Flask className="w-4 h-4" />
               {isExperimentRunning ? 'Evaluando Leyes Químicas...' : 'Experimentar Reacción'}
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -454,10 +467,13 @@ export const LabScreen: React.FC = () => {
                 availableSubstances.map((sub) => {
                   const countInVessel = selectedReactants.filter((id) => id === sub.id).length;
                   return (
-                    <div
+                    <motion.div
                       key={sub.id}
                       onClick={() => addReactant(sub.id)}
-                      className="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 hover:bg-slate-850 cursor-pointer transition-all flex items-center justify-between group active:scale-[0.98]"
+                      whileHover={{ x: 3, scale: 1.01 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.12 }}
+                      className="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 hover:bg-slate-850 cursor-pointer transition-colors flex items-center justify-between group"
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <div
@@ -487,7 +503,7 @@ export const LabScreen: React.FC = () => {
                         )}
                         <span className="text-xs text-slate-400 font-mono">+ Añadir</span>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })
               )
@@ -496,10 +512,13 @@ export const LabScreen: React.FC = () => {
               availableElements.map((el) => {
                 const countInVessel = selectedReactants.filter((id) => id === el.symbol).length;
                 return (
-                  <div
+                  <motion.div
                     key={el.number}
                     onClick={() => addReactant(el.symbol)}
-                    className="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 hover:bg-slate-850 cursor-pointer transition-all flex items-center justify-between group active:scale-[0.98]"
+                    whileHover={{ x: 3, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.12 }}
+                    className="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 hover:bg-slate-850 cursor-pointer transition-colors flex items-center justify-between group"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex flex-col items-center justify-center font-mono shrink-0">
@@ -524,7 +543,7 @@ export const LabScreen: React.FC = () => {
                       )}
                       <span className="text-xs text-slate-400 font-mono">+ Añadir</span>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })
             )}

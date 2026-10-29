@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'motion/react';
 import {
   BookOpen,
   Sparkles,
@@ -328,9 +329,14 @@ export const RecipeBookScreen: React.FC = () => {
           const isExpanded = activeRecipeId === rx.id;
 
           return (
-            <div
+            <motion.div
               key={rx.id}
-              className={`rounded-2xl border transition-all duration-200 flex flex-col justify-between overflow-hidden shadow-lg ${
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.18 }}
+              whileHover={{ y: -2 }}
+              className={`rounded-2xl border transition-colors duration-200 flex flex-col justify-between overflow-hidden shadow-lg ${
                 isExplosive
                   ? 'bg-gradient-to-b from-[#180a0a] to-[#0c0505] border-red-900/60 hover:border-red-500/50'
                   : isDiscovered
@@ -534,9 +540,11 @@ export const RecipeBookScreen: React.FC = () => {
                   {rx.conditionDescription}
                 </span>
 
-                <button
+                <motion.button
                   onClick={() => handleLoadRecipe(rx)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shrink-0 active:scale-95 ${
+                  whileHover={{ scale: 1.025 }}
+                  whileTap={{ scale: 0.96 }}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shrink-0 ${
                     isExplosive
                       ? 'bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white shadow-red-950'
                       : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-950'
@@ -546,9 +554,9 @@ export const RecipeBookScreen: React.FC = () => {
                   <FlaskConical className="w-3.5 h-3.5" />
                   <span>Cargar en el Matraz</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

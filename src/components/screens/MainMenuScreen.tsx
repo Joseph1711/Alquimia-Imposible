@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'motion/react';
 import {
   FlaskConical,
   BookOpen,
@@ -100,14 +101,17 @@ export const MainMenuScreen: React.FC = () => {
 
         {/* Start Game Action */}
         <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('lab')}
-            className="px-8 py-3.5 rounded-2xl font-bold text-sm sm:text-base text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-500/25 active:scale-[0.98] group"
+            whileHover={{ scale: 1.025, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="px-8 py-3.5 rounded-2xl font-bold text-sm sm:text-base text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 transition-colors flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-500/25 group"
           >
             <Play className="w-4 h-4 fill-current" />
             <span>{experimentCount > 0 ? 'Continuar en el Laboratorio' : 'Entrar al Laboratorio'}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </motion.button>
 
           <span className="text-[11px] text-slate-400 text-center sm:text-left font-mono">
             Presiona <kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">Enter</kbd> o pulsa para comenzar
@@ -118,59 +122,77 @@ export const MainMenuScreen: React.FC = () => {
       {/* Screen Selection Grid */}
       <div className="relative z-10 p-6 md:p-8 bg-gradient-to-t from-[#060911] via-[#060911]/90 to-transparent border-t border-slate-800/80">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('lab')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-emerald-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-emerald-500/50 text-left transition-colors group"
           >
             <FlaskConical className="w-5 h-5 text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Laboratorio</div>
             <div className="text-[10px] text-slate-400 mt-0.5">Mesa y crisol</div>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('recipes')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-amber-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-amber-500/50 text-left transition-colors group"
           >
             <BookMarked className="w-5 h-5 text-amber-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Recetario</div>
             <div className="text-[10px] text-slate-400 mt-0.5">Fórmulas & Explosiones</div>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('catalog')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-cyan-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-cyan-500/50 text-left transition-colors group"
           >
             <BookOpen className="w-5 h-5 text-cyan-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Catálogo</div>
             <div className="text-[10px] text-slate-400 mt-0.5">{discoveredCount} descubiertas</div>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('missions')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-amber-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-amber-500/50 text-left transition-colors group"
           >
             <Target className="w-5 h-5 text-amber-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Misiones</div>
             <div className="text-[10px] text-slate-400 mt-0.5">{totalMissions - completedMissionsCount} pendientes</div>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('periodic')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-purple-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-purple-500/50 text-left transition-colors group"
           >
             <Atom className="w-5 h-5 text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Tabla 118</div>
             <div className="text-[10px] text-slate-400 mt-0.5">Elementos & Enlaces</div>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={() => setCurrentScreen('progress')}
-            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-yellow-500/50 text-left transition-all group active:scale-[0.98]"
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800/90 hover:border-yellow-500/50 text-left transition-colors group"
           >
             <Award className="w-5 h-5 text-yellow-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-xs text-white">Progreso</div>
             <div className="text-[10px] text-slate-400 mt-0.5">Rango y logros</div>
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

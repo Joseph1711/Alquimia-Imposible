@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { GameProvider, useGame } from './context/GameContext';
 import { TopBar } from './components/TopBar';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -43,9 +44,20 @@ const GameShell: React.FC = () => {
       {/* Top Bar with 3-Zone contract */}
       <TopBar />
 
-      {/* Main Playfield Content */}
+      {/* Main Playfield Content with Smooth Non-Intrusive Transitions */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 pb-20 md:pb-8">
-        {renderActiveScreen()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentScreen}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full h-full"
+          >
+            {renderActiveScreen()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Mobile Thumb Navigation (Phones only) */}
