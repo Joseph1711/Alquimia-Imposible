@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #060911;
+    color: #e2e8f0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Custom scrollbars for reagent rack and catalog */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.6);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.75));
+  }
+}
+
+@keyframes heatGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(239, 68, 68, 0.8));
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-heat-glow {
+  animation: heatGlow 1.8s infinite ease-in-out;
+}

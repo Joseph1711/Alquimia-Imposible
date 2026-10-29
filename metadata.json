@@ -1,0 +1,6 @@
+{
+  "name": "Alquimia Imposible - Laboratorio Químico",
+  "description": "Juego interactivo de química experimental de 10.º grado: combina sustancias, desbloquea reacciones reales, completa misiones y construye tu laboratorio alquímico moderno.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
