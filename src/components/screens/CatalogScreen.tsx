@@ -1,3 +1,4 @@
+import chemistryVaultImage from '../../assets/images/chemistry_vault_1793212049070.jpg';
 import React, { useState } from 'react';
 import {
   Search,
@@ -59,7 +60,7 @@ export const CatalogScreen: React.FC = () => {
       {/* Visual Header with Chemical Vault Illustration & Creators Credit */}
       <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl min-h-[160px] flex flex-col justify-end p-5 md:p-6">
         <img
-          src="/src/assets/images/chemistry_vault_1793212049070.jpg"
+          src={chemistryVaultImage}
           alt="Bóveda de Reactivos Químicos"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.4] saturate-[1.1]"

@@ -1,3 +1,4 @@
+import reactionBenchImage from '../../assets/images/chemistry_reaction_bench_1794361260664.jpg';
 import React, { useState, useMemo } from 'react';
 import {
   BookOpen,
@@ -188,7 +189,7 @@ export const RecipeBookScreen: React.FC = () => {
       {/* Header Banner with Rich Visual Reaction Bench Artwork */}
       <div className="relative overflow-hidden rounded-2xl border border-amber-500/40 min-h-[170px] flex flex-col justify-end p-5 sm:p-7 shadow-2xl">
         <img
-          src="/src/assets/images/chemistry_reaction_bench_1794361260664.jpg"
+          src={reactionBenchImage}
           alt="Mesa de Síntesis y Reacciones Químicas"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.38] saturate-[1.2]"

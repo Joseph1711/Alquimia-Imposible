@@ -1,3 +1,4 @@
+import creatorsImage from '../../assets/images/alchemist_creators_duo_1794361242094.jpg';
 import React, { useState } from 'react';
 import {
   Volume2,
@@ -193,7 +194,7 @@ export const SettingsScreen: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 p-4 bg-slate-900/80 border border-slate-800 rounded-xl">
           <img
-            src="/src/assets/images/alchemist_creators_duo_1794361242094.jpg"
+            src={creatorsImage}
             alt="Tamara Villada Valencia y Adriana Isabel Martinez"
             referrerPolicy="no-referrer"
             className="w-full sm:w-36 h-28 object-cover rounded-lg border border-slate-700/80 shrink-0"

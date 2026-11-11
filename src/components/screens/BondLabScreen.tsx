@@ -1,3 +1,4 @@
+import atomicBondsImage from '../../assets/images/atomic_molecular_bonds_1794361273278.jpg';
 import React, { useState, useMemo } from 'react';
 import {
   Sparkles,
@@ -206,7 +207,7 @@ export const BondLabScreen: React.FC = () => {
       {/* Header Banner with Rich Visual Atomic Lattice & Quantum Bonds Artwork */}
       <div className="relative overflow-hidden rounded-2xl border border-cyan-500/40 min-h-[160px] flex flex-col justify-end p-5 md:p-6 shadow-2xl">
         <img
-          src="/src/assets/images/atomic_molecular_bonds_1794361273278.jpg"
+          src={atomicBondsImage}
           alt="Estructura Atómica y Enlaces Moleculares Cuánticos"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.38] saturate-[1.2]"

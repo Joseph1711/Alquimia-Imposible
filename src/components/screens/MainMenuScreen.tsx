@@ -1,3 +1,5 @@
+import heroImage from '../../assets/images/hero_alchemy_lab_1793212048776.jpg';
+import creatorsImage from '../../assets/images/alchemist_creators_duo_1794361242094.jpg';
 import React, { useEffect } from 'react';
 import {
   FlaskConical,
@@ -51,7 +53,7 @@ export const MainMenuScreen: React.FC = () => {
       {/* Cinematic Background Artwork */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_alchemy_lab_1793212048776.jpg"
+          src={heroImage}
           alt="Laboratorio de Alquimia Imposible"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center filter brightness-[0.45] saturate-[1.15] scale-105 transition-transform duration-1000"
@@ -138,7 +140,7 @@ export const MainMenuScreen: React.FC = () => {
             {/* Visual Header Image of the Researchers Duo */}
             <div className="relative h-48 sm:h-56 rounded-2xl overflow-hidden border border-slate-800/80">
               <img
-                src="/src/assets/images/alchemist_creators_duo_1794361242094.jpg"
+                src={creatorsImage}
                 alt="Tamara Villada Valencia y Adriana Isabel Martinez en el Laboratorio"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"

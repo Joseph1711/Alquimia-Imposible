@@ -1,3 +1,5 @@
+import alchemistAvatar from '../../assets/images/lab_alchemist_avatar_1793212049070.jpg';
+import creatorsImage from '../../assets/images/alchemist_creators_duo_1794361242094.jpg';
 import React from 'react';
 import {
   Award,
@@ -64,7 +66,7 @@ export const ProgressScreen: React.FC = () => {
         {/* Avatar */}
         <div className="relative shrink-0">
           <img
-            src="/src/assets/images/lab_alchemist_avatar_1793212049070.jpg"
+            src={alchemistAvatar}
             alt="Alquimista"
             referrerPolicy="no-referrer"
             className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-emerald-500/50 shadow-lg shadow-emerald-500/20"
@@ -210,7 +212,7 @@ export const ProgressScreen: React.FC = () => {
       <div className="bg-gradient-to-r from-slate-950 via-[#0a1220] to-slate-950 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col sm:flex-row items-center gap-5">
         <div className="w-full sm:w-44 h-28 rounded-xl overflow-hidden border border-slate-700/80 shrink-0 relative">
           <img
-            src="/src/assets/images/alchemist_creators_duo_1794361242094.jpg"
+            src={creatorsImage}
             alt="Tamara Villada Valencia y Adriana Isabel Martinez"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
