@@ -1,0 +1,8 @@
+{
+  "name": "Alquimia Imposible - Lab Químico de Tamara Villada & Adriana Martinez",
+  "description": "Juego interactivo de química experimental de 10.º grado desarrollado por Tamara Villada Valencia y Adriana Isabel Martinez. Combina reactivos, enlaces atómicos y reacciones reales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
